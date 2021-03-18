@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using project1.Data;
 using project1.models;
 
 namespace project1
@@ -18,7 +19,16 @@ namespace project1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<testDbContext>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+
+            //services.AddScoped<sqlStudentData>();
+            services.AddControllers();
+                 //.AddNewtonsoftJson(options =>
+                
+                 //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,10 +42,13 @@ namespace project1
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Hello World!");
+                //});
+
+                endpoints.MapControllers();
+            
             });
         }
     }
