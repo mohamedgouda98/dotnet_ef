@@ -48,5 +48,19 @@ namespace project1.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteStudent(int id)
+        {
+            var student = await this.GetStudent(id);
+            if(student == null)
+            {
+                return BadRequest();
+            }
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
     }
 }
