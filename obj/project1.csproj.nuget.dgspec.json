@@ -14,7 +14,7 @@
         "outputPath": "/Users/mohamedgouda/Projects/project1/project1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/mohamedgouda/.nuget/NuGet/NuGet.Config"
+          "/Users/mohamedgouda/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

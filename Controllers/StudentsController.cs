@@ -36,5 +36,17 @@ namespace project1.Controllers
             return student;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<Student>> PostStudent(Student student)
+        {
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetStudent", new { id = student.ID }, student);
+            //return student;
+
+
+        }
+
     }
 }
